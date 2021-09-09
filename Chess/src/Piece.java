@@ -6,6 +6,11 @@ public abstract class Piece {
         this.position = new Position();
     } // dummy for now
 
+    public void Move() {
+        //what todo?
+
+    }
+
 
 
 }
