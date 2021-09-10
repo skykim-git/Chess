@@ -1,13 +1,15 @@
 
-
+// Represents Position on the chessboard, has numberPosition, coordinate, and a piece(can be null)
 public class Position {
     private int numberPosition;
     private String coordinate;
     private Piece piece;
 
+    // EFFECTS: constructs a Position of position np and a piece
     public Position(int np) {
         this.numberPosition = np;
         NumPosToCoordinate();
+        this.piece = null;
     }
 
     public int getNumberPosition() {
@@ -18,11 +20,15 @@ public class Position {
         return this.coordinate;
     }
 
+    // MODIFIES : this
+    // EFFECTS  : change numberPosition to coordinate and assign it... ??? split into two... needs helper
     public void NumPosToCoordinate() {
 
         int num;
         int alphabetInt;
 
+        // quotient represents the row(number) in a coordinate
+        // remainder represents the col(alphabet) in a coordinate
         if (this.numberPosition % 8 == 0) {// where problem occured with 64-@ascii code
             num = this.numberPosition / 8;
             alphabetInt = 8;// 64 + 8 = ascii for h
@@ -35,6 +41,7 @@ public class Position {
         this.coordinate = alphabetString + String.valueOf(num);
     }
 
+    // EFFECTS: returns alphabet string in a coordinate given an colunm value of the number position
     public String NumToAlpha(int alphabetInt) {
         int radix = 10;
         int asciiAlpha = alphabetInt + 64; // converting to ascii code

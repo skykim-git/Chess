@@ -1,5 +1,5 @@
+// abstract class representing a Piece having position
 public abstract class Piece {
-    // position in bd(in numbers)
     protected Position position;
 
     public Piece(int np) {
