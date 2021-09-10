@@ -20,6 +20,10 @@ public class Position {
         return this.coordinate;
     }
 
+    public void setPiece(Piece piece) {
+        this.piece = piece;
+    }
+
     // MODIFIES : this
     // EFFECTS  : change numberPosition to coordinate and assign it... ??? split into two... needs helper
     public void NumPosToCoordinate() {

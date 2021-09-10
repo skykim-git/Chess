@@ -5,6 +5,10 @@ import java.util.List;
 public class ChessBoard {
     private List<Position> board = new ArrayList<Position>();
 
+    public List getBoard() {
+        return board;
+    };
+
 
     // EFFECTS : constructs a ChessBoard with 64 positions.
     public ChessBoard() {
