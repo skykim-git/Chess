@@ -4,17 +4,33 @@ public class Position {
     private int numberPosition;
     private String coordinate;
     private Piece piece;
-    int initNumPos;
-
 
     public Position(int np) {
         this.numberPosition = np;
         NumPosToCoordinate();
     }
 
+    public int getNumberPosition() {
+        return this.numberPosition;
+    }
+
+    public String getCoordinate() {
+        return this.coordinate;
+    }
+
     public void NumPosToCoordinate() {
-        int num = this.numberPosition / 8 + 1;
-        int alphabetInt = this.numberPosition % 8;
+
+        int num;
+        int alphabetInt;
+
+        if (this.numberPosition % 8 == 0) {// where problem occured with 64-@ascii code
+            num = this.numberPosition / 8;
+            alphabetInt = 8;// 64 + 8 = ascii for h
+        } else {
+            num = this.numberPosition / 8 + 1;
+            alphabetInt = this.numberPosition % 8;
+        }
+
         String alphabetString = NumToAlpha(alphabetInt);
         this.coordinate = alphabetString + String.valueOf(num);
     }
