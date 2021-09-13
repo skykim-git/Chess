@@ -26,4 +26,8 @@ public abstract class Piece {
         return this.position;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
 }

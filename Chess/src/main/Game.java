@@ -16,7 +16,7 @@ public class Game {
         board.get(2).setPiece(new Bishop("WB"));
         board.get(3).setPiece(new Queen("WQ"));
         board.get(4).setPiece(new King("WK"));
-        board.get(5).setPiece(new Bishop("WQ"));
+        board.get(5).setPiece(new Bishop("WB"));
         board.get(6).setPiece(new Knight("WN"));
         board.get(7).setPiece(new Rook("WR"));
         for (int  i = 8; i < 16; i = i +1 ) {
@@ -30,9 +30,9 @@ public class Game {
         board.get(56).setPiece(new Rook("BR"));
         board.get(57).setPiece(new Knight("BN"));
         board.get(58).setPiece(new Bishop("BB"));
-        board.get(59).setPiece(new King("BK"));
-        board.get(60).setPiece(new Queen("BQ"));
-        board.get(61).setPiece(new Bishop("BQ"));
+        board.get(59).setPiece(new King("BQ"));
+        board.get(60).setPiece(new Queen("BK"));
+        board.get(61).setPiece(new Bishop("BB"));
         board.get(62).setPiece(new Knight("BN"));
         board.get(63).setPiece(new Rook("BR"));
 
