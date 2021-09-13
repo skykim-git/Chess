@@ -20,8 +20,16 @@ public class Position {
         return this.coordinate;
     }
 
-    public void setPiece(Piece piece) {
-        this.piece = piece;
+    public void setPiece(Piece piece) { // should be bi-directional
+        if (this.piece != null) {
+            this.piece = piece;
+            piece.setPosition(this);
+        }
+
+    }
+
+    public void removePiece() {
+
     }
 
     // MODIFIES : this

@@ -11,4 +11,15 @@ public abstract class Piece {
     // abstract method for subclasses
     public abstract void Move();
 
+    public void setPosition(Position position) {
+        if (this.position != null) {
+            this.position = position;
+            position.setPiece(this);
+        }
+    }
+
+    public void removePosition() {
+
+    }
+
 }
