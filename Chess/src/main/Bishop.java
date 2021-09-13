@@ -1,9 +1,11 @@
+package main;
+
 public class Bishop extends Piece {
 
-    // EFFECTS : construct a Knight
+    // EFFECTS : construct a main.Knight
 
     public Bishop() {
-        super(0);
+        super("");
     }
     @Override
     public void Move() {

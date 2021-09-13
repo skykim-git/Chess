@@ -1,10 +1,12 @@
-// abstract class representing a Piece having position
+package main;
+
+// abstract class representing a main.Piece having position
 public abstract class Piece {
     protected Position position;
     protected String name; // take a look at naming convention in p3
 
-    public Piece(int np, String name) {
-        this.position = new Position(np);// bi-directional
+    public Piece(String name) {
+        //this.position = new Position(np);// bi-directional
         this.name = name;
     }
 
@@ -12,14 +14,17 @@ public abstract class Piece {
     public abstract void Move();
 
     public void setPosition(Position position) {
-        if (this.position != null) {
-            this.position = position;
-            position.setPiece(this);
-        }
+        this.position = position;
+        position.setPiece(this);
+
     }
 
     public void removePosition() {
 
+    }
+
+    public Position getPosition() {
+        return this.position;
     }
 
 }

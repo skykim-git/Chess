@@ -1,8 +1,10 @@
+package main;
+
 public class King extends Piece{
 
-    // EFFECTS : constructs a King
+    // EFFECTS : constructs a main.King
     public King() {
-        super(0);
+        super("");
 
 
 

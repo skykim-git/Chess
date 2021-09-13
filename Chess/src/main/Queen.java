@@ -1,9 +1,10 @@
+package main;
 
 public class Queen extends Piece{
 
-    // EFFECTS : constructs a Queen
+    // EFFECTS : constructs a main.Queen
     public Queen() {
-        super(0);
+        super("");
 
 
 

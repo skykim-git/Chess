@@ -1,11 +1,12 @@
+package main;
 
-// Represents Position on the chessboard, has numberPosition, coordinate, and a piece(can be null)
+// Represents main.Position on the chessboard, has numberPosition, coordinate, and a piece(can be null)
 public class Position {
     private int numberPosition;
     private String coordinate;
     private Piece piece;
 
-    // EFFECTS: constructs a Position of position np and a piece
+    // EFFECTS: constructs a main.Position of position np and a piece
     public Position(int np) {
         this.numberPosition = np;
         NumPosToCoordinate();
@@ -20,8 +21,12 @@ public class Position {
         return this.coordinate;
     }
 
+    public Piece getPiece() {
+        return this.piece;
+    }
+
     public void setPiece(Piece piece) { // should be bi-directional
-        if (this.piece != null) {
+        if (this.piece == null) {
             this.piece = piece;
             piece.setPosition(this);
         }
