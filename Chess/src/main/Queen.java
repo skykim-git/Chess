@@ -3,8 +3,8 @@ package main;
 public class Queen extends Piece{
 
     // EFFECTS : constructs a main.Queen
-    public Queen() {
-        super("");
+    public Queen(String name) {
+        super(name);
 
 
 

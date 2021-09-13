@@ -4,9 +4,10 @@ public class Bishop extends Piece {
 
     // EFFECTS : construct a main.Knight
 
-    public Bishop() {
-        super("");
+    public Bishop(String name) {
+        super(name);
     }
+
     @Override
     public void Move() {
 

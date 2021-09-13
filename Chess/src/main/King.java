@@ -3,8 +3,8 @@ package main;
 public class King extends Piece{
 
     // EFFECTS : constructs a main.King
-    public King() {
-        super("");
+    public King(String name) {
+        super(name);
 
 
 

@@ -6,7 +6,6 @@ public abstract class Piece {
     protected String name; // take a look at naming convention in p3
 
     public Piece(String name) {
-        //this.position = new Position(np);// bi-directional
         this.name = name;
     }
 
