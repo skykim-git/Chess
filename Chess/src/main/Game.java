@@ -5,6 +5,8 @@ import java.util.List;
 public class Game {
     //initialize game
     ChessBoard cb;
+    int turn;
+
 
     public Game() {
         this.cb = new ChessBoard();
@@ -40,6 +42,15 @@ public class Game {
 
     public ChessBoard getChessBoard() {
         return cb;
+    }
+
+    public void movePiece(int p) {
+        this.cb.getBoard().get(p).getPiece().move();// will move. think more about the mechnism of  moving. I thinks
+        // choosing a position(by user click input is reasonable)
+    }
+
+    public static void main(String arg[]) {
+
     }
 
 }

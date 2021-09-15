@@ -10,7 +10,7 @@ public abstract class Piece {
     }
 
     // abstract method for subclasses
-    public abstract void Move();
+    public abstract void move();
 
     public void setPosition(Position position) {
         this.position = position;
