@@ -30,8 +30,8 @@ public class Position {
             this.piece = piece;
             piece.setPosition(this);
         } else {
-            removePiece();
-            this.setPiece(piece);
+//            removePiece();
+//            this.setPiece(piece);
         }
 
     }
