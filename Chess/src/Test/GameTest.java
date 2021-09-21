@@ -58,8 +58,6 @@ public class GameTest {
         p = b.get(63);
         assertEquals("BR",p.getPiece().getName());
 
-
-
     }
 
 

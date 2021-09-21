@@ -9,7 +9,8 @@ public class Bishop extends Piece {
     }
 
     @Override
-    public void Move() {
+    public void move(Position p, ChessBoard cb) {
+        int i = 1;
 
     }
 }

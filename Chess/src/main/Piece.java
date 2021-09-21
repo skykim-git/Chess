@@ -10,7 +10,7 @@ public abstract class Piece {
     }
 
     // abstract method for subclasses
-    public abstract void move(Positino p, ChessBoard cb);
+    public abstract void move(Position p, ChessBoard cb);
 
     public void setPosition(Position position) {
         this.position = position;

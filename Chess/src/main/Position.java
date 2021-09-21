@@ -31,6 +31,7 @@ public class Position {
             piece.setPosition(this);
         } else {
             removePiece();
+            this.setPiece(piece);
         }
 
     }
