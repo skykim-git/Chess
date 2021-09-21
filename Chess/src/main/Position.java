@@ -29,11 +29,15 @@ public class Position {
         if (this.piece == null) {
             this.piece = piece;
             piece.setPosition(this);
+        } else {
+            removePiece();
         }
 
     }
 
     public void removePiece() {
+        this.piece.removePosition();
+        this.piece = null;
 
     }
 
