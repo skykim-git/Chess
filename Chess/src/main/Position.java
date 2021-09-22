@@ -27,6 +27,7 @@ public class Position {
 
     public void setPiece(Piece piece) { // should be bi-directional
         if (this.piece != piece) {
+
             if (this.piece == null) {
                 this.piece = piece;
                 piece.setPosition(this);

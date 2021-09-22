@@ -29,11 +29,13 @@ public class Pawn extends Piece{
                 if (moveToNumberPos == currentNumberPos + 8) {// compared to current position, front
                     if (cb.getBoard().get(moveToNumberPos).getPiece() == null) {// if front empty
                         pos.setPiece(this); // might be defined as a helper
+                        this.position.removePiece();// should remove from current postion???
                     }
                 } else if (moveToNumberPos == currentNumberPos + 8 + 1 // case where going(killing pieces on the diagonal
                             ||moveToNumberPos == currentNumberPos + 8 -1) {
                         if (cb.getBoard().get(moveToNumberPos).getPiece().getName().substring(1,1) != "K") {
                             pos.setPiece(this);
+                            this.position.removePiece();// should remove from current postion
                         }
                     }
 

@@ -1,9 +1,9 @@
 package Test;
 
-import main.Piece;
-import main.Position;
-import main.Queen;
+import main.*;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -32,6 +32,21 @@ public class PositionTest {
 
         assertEquals("WQ",p.getPiece().getName());
         assertEquals(0,pie2.getPosition().getNumberPosition());
+
+
+    }
+
+    @Test
+    void testPawnMove() {
+        Game g = new Game();
+        ChessBoard cb = g.getChessBoard();
+        List<Position> bd = g.getChessBoard().getBoard();
+        Position pawnPos = bd.get(8);
+        pawnPos.getPiece().move(bd.get(16), cb);
+
+        assertEquals(null,bd.get(8).getPiece().getName());// pawn removed from original position
+        assertEquals("WP",bd.get(16).getPiece().getName());// pawn moved
+
 
 
     }
