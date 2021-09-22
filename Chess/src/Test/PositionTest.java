@@ -24,12 +24,13 @@ public class PositionTest {
         Piece pie2 = new Queen("WQ");
 
         p.setPiece(pie1);
-        p.removePiece(); // should put this in the setPiece or can't I just call remove when I want to place new piece
+        //p.removePiece(); // should put this in the setPiece or can't I just call remove when I want to place new piece
         // so that I avoid infinite loop(look for previous work you've done)
         p.setPiece(pie2);
 
 
-        assertEquals(0,pie2.getPosition().getNumberPosition());
+        assertEquals("WQ",p.getPiece().getName());
+       // assertEquals(0,pie2.getPosition().getNumberPosition());
 
 
     }
