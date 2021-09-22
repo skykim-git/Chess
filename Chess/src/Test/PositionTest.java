@@ -26,11 +26,12 @@ public class PositionTest {
         p.setPiece(pie1);
         //p.removePiece(); // should put this in the setPiece or can't I just call remove when I want to place new piece
         // so that I avoid infinite loop(look for previous work you've done)
+        assertEquals(0,pie1.getPosition().getNumberPosition());
         p.setPiece(pie2);
 
 
         assertEquals("WQ",p.getPiece().getName());
-       // assertEquals(0,pie2.getPosition().getNumberPosition());
+        assertEquals(0,pie2.getPosition().getNumberPosition());
 
 
     }
