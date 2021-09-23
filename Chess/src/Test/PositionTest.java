@@ -37,7 +37,7 @@ public class PositionTest {
     }
 
     @Test
-    void testPawnMove() {
+    void testPawnMove() {// shouldn't it be pawn test...?
         Game g = new Game();
         ChessBoard cb = g.getChessBoard();
         List<Position> bd = g.getChessBoard().getBoard();
@@ -52,6 +52,22 @@ public class PositionTest {
         assertEquals("WP",bd.get(16).getPiece().getName());// pawn moved
 
 
+
+    }
+
+    @Test
+    void testPawnKill() {
+        Game g = new Game();
+        ChessBoard cb = g.getChessBoard();
+        List<Position> bd = g.getChessBoard().getBoard();
+
+        // add black
+        Pawn blackPawn = new Pawn("BP");
+        bd.get(16).setPiece(blackPawn); // numpos 9
+        bd.get(9).getPiece().move(bd.get(16), cb); // numpos 2
+
+        assertEquals("WP", bd.get(16).getPiece().getName());
+        assertEquals(null, bd.get(9).getPiece());
 
     }
 }
