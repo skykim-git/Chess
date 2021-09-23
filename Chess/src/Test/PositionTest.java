@@ -42,9 +42,13 @@ public class PositionTest {
         ChessBoard cb = g.getChessBoard();
         List<Position> bd = g.getChessBoard().getBoard();
         Position pawnPos = bd.get(8);
+        assertEquals(9,pawnPos.getPiece().getPosition().getNumberPosition());// numpos + 1 to index
+
         pawnPos.getPiece().move(bd.get(16), cb);
 
-        assertEquals(null,bd.get(8).getPiece().getName());// pawn removed from original position
+
+        // pawn still at the previous location
+        assertEquals(null,bd.get(8).getPiece());// pawn removed from original position
         assertEquals("WP",bd.get(16).getPiece().getName());// pawn moved
 
 

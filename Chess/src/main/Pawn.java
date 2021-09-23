@@ -19,17 +19,21 @@ public class Pawn extends Piece{
 
         //should decide if black or white
         int moveToNumberPos = pos.getNumberPosition();
+        Position currentPos = this.position;
         int currentNumberPos = this.position.getNumberPosition();
 
 
         if (moveToNumberPos >= 64 || moveToNumberPos <= -1) { // out of range case
             System.out.print("out of bound");// possible throw exception
         } else {
-            if (this.getName().substring(0, 0) == "W") {// white
+            if (this.getName().substring(0, 1).equals("W")) {// white
                 if (moveToNumberPos == currentNumberPos + 8) {// compared to current position, front
                     if (cb.getBoard().get(moveToNumberPos).getPiece() == null) {// if front empty
                         pos.setPiece(this); // might be defined as a helper
-                        this.position.removePiece();// should remove from current postion???
+                        currentPos.removePiece();// should remove from current postion??? current here is changed. so
+                        //currentPos.getPiece().removePosition();
+                        System.out.print(currentNumberPos);
+                        System.out.print(moveToNumberPos);
                     }
                 } else if (moveToNumberPos == currentNumberPos + 8 + 1 // case where going(killing pieces on the diagonal
                             ||moveToNumberPos == currentNumberPos + 8 -1) {

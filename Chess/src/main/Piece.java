@@ -13,8 +13,10 @@ public abstract class Piece {
     public abstract void move(Position p, ChessBoard cb);
 
     public void setPosition(Position position) {
-        this.position = position;
-        position.setPiece(this);
+        if (this.position != position)  {
+            this.position = position;
+            position.setPiece(this);
+        }
 
     }
 
