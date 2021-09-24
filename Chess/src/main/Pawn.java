@@ -29,15 +29,18 @@ public class Pawn extends Piece{
             if (isWhite(this)) {// white
                 if (moveToNumberPos == currentNumberPos + 8) {// compared to current position, front
                     if (cb.getBoard().get(moveToNumberPos).getPiece() == null) {// if front empty
-                        pos.setPiece(this); // might be defined as a helper
+                        System.out.print("forward runs");
                         currentPos.removePiece();// should remove from current postion??? current here is changed. so
+                        pos.setPiece(this); // might be defined as a helper
+
+                        System.out.print(currentPos.getNumberPosition());
                     }
                 } else if ((moveToNumberPos == currentNumberPos + 8 + 1 // case where going(killing pieces on the diagonal
                             ||moveToNumberPos == currentNumberPos + 8 -1)
                             && !isWhite(pos.getPiece()) ) { // and black
                         // later case king kill
                             pos.setPiece(this);
-                            System.out.print("why the fuck");
+                            System.out.print("kill runs");
                             currentPos.removePiece();// should remove from current postion
 
                     }

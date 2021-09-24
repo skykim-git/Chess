@@ -47,6 +47,10 @@ public class Position {
 
     }
 
+    public void onlyRemovePiece() { // to delete Piece from previous position.
+        this.piece = null;
+    }
+
     // MODIFIES : this
     // EFFECTS  : change numberPosition to coordinate and assign it... ??? split into two... needs helper
     public void NumPosToCoordinate() {

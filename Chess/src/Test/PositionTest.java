@@ -15,7 +15,9 @@ public class PositionTest {
         Piece pie = new Queen("BQ");
         p.setPiece(pie);
         //test if the pie has the position
+        assertEquals(pie,p.getPiece());
         assertEquals(0,pie.getPosition().getNumberPosition());
+
 
 
     }
@@ -26,13 +28,12 @@ public class PositionTest {
         Piece pie2 = new Queen("WQ");
 
         p.setPiece(pie1);
-        //p.removePiece(); // should put this in the setPiece or can't I just call remove when I want to place new piece
-        // so that I avoid infinite loop(look for previous work you've done)
         assertEquals(0,pie1.getPosition().getNumberPosition());
         p.setPiece(pie2);
 
-
+        //position got WQ
         assertEquals("WQ",p.getPiece().getName());
+        //piece got position 0
         assertEquals(0,pie2.getPosition().getNumberPosition());
 
 
@@ -44,16 +45,15 @@ public class PositionTest {
         ChessBoard cb = g.getChessBoard();
         List<Position> bd = g.getChessBoard().getBoard();
         Position pawnPos = bd.get(8);
-        assertEquals(9,pawnPos.getPiece().getPosition().getNumberPosition());// numpos + 1 to index
+        //assertEquals(9,pawnPos.getPiece().getPosition().getNumberPosition());// numpos + 1 to index
 
-        pawnPos.getPiece().move(bd.get(16), cb);
+        bd.get(8).getPiece().move(bd.get(16), cb);
 
 
         // pawn still at the previous location
         assertEquals(null,bd.get(8).getPiece());// pawn removed from original position
         assertEquals("WP",bd.get(16).getPiece().getName());// pawn moved
-        assertEquals(1,bd.get(16).getPiece().getPosition());
-
+        assertEquals(17,bd.get(16).getPiece().getPosition().getNumberPosition());// moved pawn does not get position
     }
 
     @Test
@@ -72,8 +72,11 @@ public class PositionTest {
         assertEquals(null,bd.get(8).getPiece());// pawn removed from original position
         assertEquals("WP",bd.get(16).getPiece().getName());// pawn moved
 
-        assertEquals(17,bd.get(16).getPiece().getPosition());
-        //bd.get(16).getPiece().move(bd.get(24), cb);
+        assertEquals(17,bd.get(16).getPiece().getPosition().getNumberPosition());
+        bd.get(16).getPiece().move(bd.get(24), cb);
+
+        assertEquals(null,bd.get(16).getPiece());
+        assertEquals(25,bd.get(24).getPiece().getPosition().getNumberPosition());
 
 
         // pawn still at the previous location
