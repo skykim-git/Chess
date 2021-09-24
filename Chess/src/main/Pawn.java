@@ -35,11 +35,11 @@ public class Pawn extends Piece{
                 } else if ((moveToNumberPos == currentNumberPos + 8 + 1 // case where going(killing pieces on the diagonal
                             ||moveToNumberPos == currentNumberPos + 8 -1)
                             && !isWhite(pos.getPiece()) ) { // and black
-                        if (cb.getBoard().get(moveToNumberPos).getPiece().getName().substring(1,1) != "K") {
+                        // later case king kill
                             pos.setPiece(this);
                             System.out.print("why the fuck");
                             currentPos.removePiece();// should remove from current postion
-                        }
+
                     }
 
             } else { // black case
