@@ -28,4 +28,15 @@ public abstract class Piece {
         return this.name;
     }
 
+    // helper 1
+    public boolean isWhite(Piece p) {
+        String name = p.getName();
+        if (name.substring(0,1).equals("W")) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
 }

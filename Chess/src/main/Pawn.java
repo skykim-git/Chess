@@ -31,11 +31,10 @@ public class Pawn extends Piece{
                     if (cb.getBoard().get(moveToNumberPos).getPiece() == null) {// if front empty
                         currentPos.removePiece();// should remove from current position
                         pos.setPiece(this); // can be defined as a helper
-
                     }
                 } else if ((moveToNumberPos == currentNumberPos + 8 + 1 // case where going(killing pieces on the diagonal
                             ||moveToNumberPos == currentNumberPos + 8 -1)
-                            && !isWhite(pos.getPiece()) ) { // kill black
+                            && !isWhite(pos.getPiece()) ) { // kill black // get isWhite out(need no possible places exception)
                         // later case king kill
                         currentPos.removePiece();// should remove from current position
                         pos.setPiece(this);
@@ -61,14 +60,8 @@ public class Pawn extends Piece{
 
 
     }
-    // helper 1
-    public boolean isWhite(Piece p) {
-        String name = p.getName();
-        if (name.substring(0,1).equals("W")) {
-            return true;
-        } else {
-            return false;
-        }
 
-    }
+    // promotion feature add later
+
+
 }

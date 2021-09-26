@@ -8,8 +8,39 @@ public class Knight extends Piece {
         super(name);
     }
     @Override
-    public void move(Position p, ChessBoard cb) {
-        int i = 1;
+    public void move(Position pos, ChessBoard cb) {
+
+        int moveToNumberPos = pos.getNumberPosition();// numberPosition that we are moving to
+        Position currentPos = this.position;//position current
+        int currentNumberPos = this.position.getNumberPosition();// numberPosition current
+
+        if (moveToNumberPos >= 64 || moveToNumberPos <= -1) { // out of range case
+            System.out.print("out of bound");// possible throw exception
+        } else {
+            if (isWhite(this)) {
+                if (moveToNumberPos == currentNumberPos + 2*8 + 1
+                    ||moveToNumberPos == currentNumberPos + 2*8 - 1
+                    ||moveToNumberPos == currentNumberPos + 1*8 + 2
+                    ||moveToNumberPos == currentNumberPos + 1*8 - 2
+                    ||moveToNumberPos == currentNumberPos - 1*8 + 2
+                    ||moveToNumberPos == currentNumberPos - 1*8 - 2
+                    ||moveToNumberPos == currentNumberPos - 2*8 + 1
+                    ||moveToNumberPos == currentNumberPos - 2*8 - 1) {
+
+                    // isn't it enough(except for the check case...?)
+                    if (cb.getBoard().get(moveToNumberPos).getPiece() == null) {// if front empty // helper??? //simpiify using pos.get...
+                        currentPos.removePiece();// should remove from current position
+                        pos.setPiece(this); // can be defined as a helper
+                    } else if (!isWhite(pos.getPiece())) {
+                        currentPos.removePiece();// should remove from current position
+                        pos.setPiece(this); // can be defined as a helper
+                    } else {
+                        //teamkillexception
+                    }
+                }
+            }
+
+        }
 
     }
 }
