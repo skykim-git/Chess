@@ -14,12 +14,10 @@ public abstract class Piece {
 
     public void setPosition(Position position) {
         this.position = position;
-
     }
 
     public void removePosition() {
         this.position = null;
-
     }
 
     public Position getPosition() {

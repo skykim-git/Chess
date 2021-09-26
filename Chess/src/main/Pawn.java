@@ -23,38 +23,36 @@ public class Pawn extends Piece{
         int currentNumberPos = this.position.getNumberPosition();// numberPosition current
 
 
-        if (moveToNumberPos >= 64 || moveToNumberPos <= -1) { // out of range case
+        if (moveToNumberPos >= 64 || moveToNumberPos <= -1) { // out of range case // can be defined as a helper
             System.out.print("out of bound");// possible throw exception
         } else {
             if (isWhite(this)) {// white
                 if (moveToNumberPos == currentNumberPos + 8) {// compared to current position, front
                     if (cb.getBoard().get(moveToNumberPos).getPiece() == null) {// if front empty
-                        System.out.print("forward runs");
-                        currentPos.removePiece();// should remove from current postion??? current here is changed. so
-                        pos.setPiece(this); // might be defined as a helper
+                        currentPos.removePiece();// should remove from current position
+                        pos.setPiece(this); // can be defined as a helper
 
-                        System.out.print(currentPos.getNumberPosition());
                     }
                 } else if ((moveToNumberPos == currentNumberPos + 8 + 1 // case where going(killing pieces on the diagonal
                             ||moveToNumberPos == currentNumberPos + 8 -1)
-                            && !isWhite(pos.getPiece()) ) { // and black
+                            && !isWhite(pos.getPiece()) ) { // kill black
                         // later case king kill
-                            pos.setPiece(this);
-                            System.out.print("kill runs");
-                            currentPos.removePiece();// should remove from current postion
-
+                        currentPos.removePiece();// should remove from current position
+                        pos.setPiece(this);
                     }
 
-            } else { // black case
+            } else { // black
                 if (moveToNumberPos == currentNumberPos - 8) {// front compared to the current position
                     if (cb.getBoard().get(moveToNumberPos).getPiece() == null) {
+                        currentPos.removePiece();// should remove from current position
                         pos.setPiece(this);
                     }
-                } else if (moveToNumberPos == currentNumberPos - 8 + 1
-                        ||moveToNumberPos == currentNumberPos - 8 -1) {
-                    if (cb.getBoard().get(moveToNumberPos).getPiece().getName().substring(1,1) != "K") {
+                } else if ((moveToNumberPos == currentNumberPos - 8 + 1
+                            ||moveToNumberPos == currentNumberPos - 8 -1)
+                            && isWhite(pos.getPiece())) {
+                        currentPos.removePiece();// should remove from current position
                         pos.setPiece(this);
-                    }
+
 
                 }
 
