@@ -28,29 +28,44 @@ public class Pawn extends Piece{
         } else {
             if (isWhite(this)) {// white
                 if (moveToNumberPos == currentNumberPos + 8) {// compared to current position, front
-                    if (cb.getBoard().get(moveToNumberPos).getPiece() == null) {// if front empty
+                    if (pos.getPiece() == null) {// if front empty
                         currentPos.removePiece();// should remove from current position
                         pos.setPiece(this); // can be defined as a helper
+                    } else {
+                        // no possible place exception
                     }
-                } else if ((moveToNumberPos == currentNumberPos + 8 + 1 // case where going(killing pieces on the diagonal
-                            ||moveToNumberPos == currentNumberPos + 8 -1)
-                            && !isWhite(pos.getPiece()) ) { // kill black // get isWhite out(need no possible places exception)
+                } else if (moveToNumberPos == currentNumberPos + 8 + 1 // case where going(killing pieces on the diagonal
+                            ||moveToNumberPos == currentNumberPos + 8 -1) { // kill black // get isWhite out(need no possible places exception)
                         // later case king kill
+                    if (!isWhite(pos.getPiece())) {
                         currentPos.removePiece();// should remove from current position
                         pos.setPiece(this);
+                    } else {
+                        // throw no possible place exception (teamkill exception)
                     }
+
+                } else {
+                    // no possible place exception
+                }
 
             } else { // black
                 if (moveToNumberPos == currentNumberPos - 8) {// front compared to the current position
-                    if (cb.getBoard().get(moveToNumberPos).getPiece() == null) {
+                    if (pos.getPiece() == null) {
                         currentPos.removePiece();// should remove from current position
                         pos.setPiece(this);
+                    } else {
+                        // no possible place exception
                     }
-                } else if ((moveToNumberPos == currentNumberPos - 8 + 1
-                            ||moveToNumberPos == currentNumberPos - 8 -1)
-                            && isWhite(pos.getPiece())) {
+                } else if (moveToNumberPos == currentNumberPos - 8 + 1
+                            ||moveToNumberPos == currentNumberPos - 8 -1) {
+                    if (isWhite(pos.getPiece())) {
                         currentPos.removePiece();// should remove from current position
                         pos.setPiece(this);
+                    } else {
+                        // throw no possible place exception
+
+                    }
+
 
 
                 }

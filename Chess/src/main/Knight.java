@@ -27,8 +27,12 @@ public class Knight extends Piece {
                     ||moveToNumberPos == currentNumberPos - 2*8 + 1
                     ||moveToNumberPos == currentNumberPos - 2*8 - 1) {
 
-                    // isn't it enough(except for the check case...?)
-                    if (cb.getBoard().get(moveToNumberPos).getPiece() == null) {// if front empty // helper??? //simpiify using pos.get...
+//                    these two are diff, guess something to do with pass by reference... above works below does not catch
+                    // changes already made
+//                    System.out.print(pos.getPiece());
+//                    System.out.print(cb.getBoard().get(moveToNumberPos).getPiece().getName());
+
+                    if (pos.getPiece() == null) {// if front empty // helper??? //simpiify using pos.get...
                         currentPos.removePiece();// should remove from current position
                         pos.setPiece(this); // can be defined as a helper
                     } else if (!isWhite(pos.getPiece())) {
