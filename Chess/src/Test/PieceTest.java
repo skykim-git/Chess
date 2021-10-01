@@ -18,6 +18,5 @@ public class PieceTest {
 
         assertEquals(pie,p.getPiece());
         assertEquals(p,pie.getPosition());
-
     }
 }
