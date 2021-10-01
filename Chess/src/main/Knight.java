@@ -42,6 +42,27 @@ public class Knight extends Piece {
                         //teamkillexception
                     }
                 }
+            } else { // black
+                if (moveToNumberPos == currentNumberPos + 2*8 + 1
+                        ||moveToNumberPos == currentNumberPos + 2*8 - 1
+                        ||moveToNumberPos == currentNumberPos + 1*8 + 2
+                        ||moveToNumberPos == currentNumberPos + 1*8 - 2
+                        ||moveToNumberPos == currentNumberPos - 1*8 + 2
+                        ||moveToNumberPos == currentNumberPos - 1*8 - 2
+                        ||moveToNumberPos == currentNumberPos - 2*8 + 1
+                        ||moveToNumberPos == currentNumberPos - 2*8 - 1) {
+                    if (pos.getPiece() == null) {// if front empty // helper??? //simpiify using pos.get...
+                        currentPos.removePiece();// should remove from current position
+                        pos.setPiece(this); // can be defined as a helper
+                    } else if (isWhite(pos.getPiece())) {
+                        currentPos.removePiece();// should remove from current position
+                        pos.setPiece(this); // can be defined as a helper
+                    } else {
+                        //teamkillexception
+                    }
+
+                }
+
             }
 
         }
