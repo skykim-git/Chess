@@ -35,8 +35,39 @@ public class BishopTest {
     }
 
     @Test
-    void WhiteBishopMove() {
+    void WhiteBishopMoveNW1() { // northWest
         testMoveHelper(new Bishop("WB"), 27, 34, "WB");
-
     }
+
+    @Test
+    void WhiteBishopMoveNW2() {
+        testMoveHelper(new Bishop("WB"), 27, 41, "WB");
+    }
+
+    @Test
+    void WhiteBishopMoveNE1() { // northWest
+        testMoveHelper(new Bishop("WB"), 27, 36, "WB");
+    }
+
+    @Test
+    void WhiteBishopMoveNE2() { // northWest
+        testMoveHelper(new Bishop("WB"), 27, 45, "WB");
+    }
+
+//    @Test
+//    void WhiteBishopKillNE3() {
+//
+//    }
+
+    @Test
+    void WhiteBishopMoveSW1() { // northWest
+        testMoveHelper(new Bishop("WB"), 27, 18, "WB");
+    }
+
+    @Test
+    void WhiteBishopMoveSE1() { // northWest
+        testMoveHelper(new Bishop("WB"), 27, 20, "WB");
+    }
+
+
 }
