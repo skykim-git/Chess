@@ -1,9 +1,6 @@
 package Test;
 
-import main.ChessBoard;
-import main.Game;
-import main.Knight;
-import main.Position;
+import main.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,6 +19,17 @@ public class KnightTest {
         g = new Game();
         cb = g.getChessBoard();
         bd = cb.getBoard();
+    }
+
+
+    @Test
+    void WhiteKnightMoveNotValidPos() {
+        bd.get(35).setPiece(new Knight("WN"));
+        bd.get(35).getPiece().move(bd.get(36),cb);
+        // check if the knight was removed from the original position
+        assertEquals("WN",bd.get(35).getPiece().getName());
+        // check if the pawn was moved (position has piece)
+        assertEquals(null,bd.get(36).getPiece());
     }
 
     @Test
@@ -313,6 +321,121 @@ public class KnightTest {
         // check if the pawn was moved (piece has position)
         assertEquals(26, bd.get(25).getPiece().getPosition().getNumberPosition());
     }
+
+    // refactor all with function
+
+    void testMoveHelper(Piece p, int setNp, int moveNp, String expected) {
+        bd.get(setNp).setPiece(p);
+        bd.get(setNp).getPiece().move(bd.get(moveNp), cb);
+
+        // check if the knight was removed from the original position
+        assertEquals(null, bd.get(setNp).getPiece());
+        // check if the pawn was moved (position has piece)
+        assertEquals(expected, bd.get(moveNp).getPiece().getName());
+        // check if the pawn was moved (piece has position)
+        assertEquals(moveNp+1, bd.get(moveNp).getPiece().getPosition().getNumberPosition());
+
+    }
+
+    void testKillHelper(Piece p, int setNp, int moveNp, String expected, String expectedToKill) {
+        // place White knight at index 35 (for move in every possible position)
+        bd.get(setNp).setPiece(p);
+        //
+        bd.get(moveNp).setPiece(new Knight(expectedToKill));
+        // move Knight to index 50 // killing
+        bd.get(setNp).getPiece().move(bd.get(moveNp),cb);
+
+        // check if the knight was removed from the original position
+        assertEquals(null,bd.get(setNp).getPiece());
+        // check if the pawn was moved (position has piece)
+        assertEquals(expected,bd.get(moveNp).getPiece().getName());
+        // check if the pawn was moved (piece has position)
+        assertEquals(moveNp+1,bd.get(moveNp).getPiece().getPosition().getNumberPosition());
+    }
+
+    @Test
+    void BlackKnightMove2F1L() {
+        bd.get(10).removePiece();
+        this.testMoveHelper(new Knight("BK"), 27, 10, "BK");
+    }
+
+    @Test
+    void BlackKnightKill2F1L() {
+        this.testKillHelper(new Knight("BK"), 27, 10, "BK", "WK");
+    }
+
+    @Test
+    void BlackKnightMove2F1R() {
+        bd.get(12).removePiece();
+        this.testMoveHelper(new Knight("BK"), 27, 12, "BK");
+    }
+
+    @Test
+    void BlackKnightKill2F1R() {
+        this.testKillHelper(new Knight("BK"), 27, 12, "BK", "WK");
+    }
+
+    @Test
+    void BlackKnightMove1F2L() {
+        this.testMoveHelper(new Knight("BK"), 27, 17, "BK");
+    }
+
+    @Test
+    void BlackKnightKill1F2L() {
+        this.testKillHelper(new Knight("BK"), 27, 17, "BK", "WK");
+    }
+
+    @Test
+    void BlackKnightMove1F2R() {
+        this.testMoveHelper(new Knight("BK"), 27, 21, "BK");
+    }
+
+    @Test
+    void BlackKnightKill1F2R() {
+        this.testKillHelper(new Knight("BK"), 27, 21, "BK", "WK");
+    }
+
+    @Test
+    void BlackKnightMove1B2L() {
+        this.testMoveHelper(new Knight("BK"), 27, 33, "BK");
+    }
+
+    @Test
+    void BlackKnightKill1B2L() {
+        this.testKillHelper(new Knight("BK"), 27, 33, "BK", "WK");
+    }
+
+    @Test
+    void BlackKnightMove1B2R() {
+        this.testMoveHelper(new Knight("BK"), 27, 37, "BK");
+    }
+    @Test
+    void BlackKnightKill1B2R() {
+        this.testKillHelper(new Knight("BK"), 27, 37, "BK", "WK");
+    }
+
+    @Test
+    void BlackKnightMove2B1L() {
+        this.testMoveHelper(new Knight("BK"), 27, 42, "BK");
+    }
+
+    @Test
+    void BlackKnightKill2B1L() {
+        this.testKillHelper(new Knight("BK"), 27, 42, "BK", "WK");
+    }
+
+    @Test
+    void BlackKnightMove2B1R() {
+        this.testMoveHelper(new Knight("BK"), 27, 44, "BK");
+    }
+
+    @Test
+    void BlackKnightKill2B1R() {
+        this.testKillHelper(new Knight("BK"), 27, 44, "BK", "WK");
+    }
+
+
+
 
 
 
