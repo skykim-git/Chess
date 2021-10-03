@@ -18,41 +18,38 @@ public class Bishop extends Piece {
 
         if (moveToNumberPos >= 64 || moveToNumberPos <= -1) { // out of range case // can be defined as a helper
             System.out.print("out of bound");// possible throw exception
-        } if (isInRange(moveToNumberPos,currentNumberPos)) {
-            if (isWhite(this)) {//white
-                if (isNoBlocking(currentNumberPos,moveToNumberPos,cb)) {
-                if (pos.getPiece() == null) {// if front empty // helper??? //simpiify using pos.get...
-                    currentPos.removePiece();// should remove from current position
-                    pos.setPiece(this); // can be defined as a helper
-
-                } else if (!isWhite(pos.getPiece())) {
-                    currentPos.removePiece();// should remove from current position
-                    pos.setPiece(this); // can be defined as a helper
-                } else {
-                    //teamkillexception
-                }
-                } else {
-
-                }
-            } else {//black
-                if (pos.getPiece() == null) {// if front empty // helper??? //simpiify using pos.get...
-                    currentPos.removePiece();// should remove from current position
-                    pos.setPiece(this); // can be defined as a helper
-                } else if (isWhite(pos.getPiece())) {
-                    currentPos.removePiece();// should remove from current position
-                    pos.setPiece(this); // can be defined as a helper
-                } else {
-                    //teamkillexception
-                }
-
-            }
         } else {
-            System.out.print("not valid position");
+            if (isInRange(moveToNumberPos,currentNumberPos)) {
+                if (isNoBlocking(currentNumberPos,moveToNumberPos,cb)) {
+                    if (isWhite(this)) {//white
+                        if (pos.getPiece() == null) {// if front empty // helper??? //simpiify using pos.get...
+                            currentPos.removePiece();// should remove from current position
+                            pos.setPiece(this); // can be defined as a helper
 
-
+                        } else if (!isWhite(pos.getPiece())) {
+                            currentPos.removePiece();// should remove from current position
+                            pos.setPiece(this); // can be defined as a helper
+                        } else {
+                            //teamkillexception
+                        }
+                    } else {//black
+                        if (pos.getPiece() == null) {// if front empty // helper??? //simpiify using pos.get...
+                            currentPos.removePiece();// should remove from current position
+                            pos.setPiece(this); // can be defined as a helper
+                        } else if (isWhite(pos.getPiece())) {
+                            currentPos.removePiece();// should remove from current position
+                            pos.setPiece(this); // can be defined as a helper
+                        } else {
+                            //teamkillexception
+                        }
+                    }
+                }
+            } else {
+                System.out.print("not valid position");
+            }
         }
-
     }
+
 
     boolean isInRange(int moveToNumberPos, int currentNumberPos) {
 
@@ -68,8 +65,10 @@ public class Bishop extends Piece {
 
     boolean isNoBlocking(int curr, int moveTo, ChessBoard cb) {
         String dir = "";
+        System.out.print("in isnoblock");
         for (int n = -7; n < 8; n++) {
-            if (moveTo == n*8 + n) {
+            if (moveTo == curr + n*8 + n) {
+                System.out.print("in here");
                 if (n > 0) {
                     dir = "NE";
 
@@ -78,7 +77,7 @@ public class Bishop extends Piece {
                 } else {
                     dir = "SE";
                 }
-            } else if(moveTo == n*8 - n) {
+            } else if(moveTo == curr + n*8 - n) {
                 if (n > 0) {
                     dir = "NW";
                 } else if (n==0) {
@@ -121,8 +120,10 @@ public class Bishop extends Piece {
             return true;
 
         } else {
+            System.out.print("invalid position");//throw exception
+            return false;
+
 
         }
-        for (int n)
     }
 }
