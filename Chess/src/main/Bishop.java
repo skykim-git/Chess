@@ -64,6 +64,46 @@ public class Bishop extends Piece {
     }
 
     boolean isBlocking(int curr, int moveTo, ChessBoard cb) {
+        String dir = directionHelper(curr,moveTo);
+        System.out.print(dir);
+//since curr is numberposition(which is one larger than the coordinate, subtracting 1
+        if (dir.equals("NE")) { // i should be curr + 9, because given piece is
+            for (int i = curr + 9; !(i == moveTo); i = i+9) {
+                if (!(cb.getBoard().get(i).getPiece() == null)) {
+                    return true;
+                }
+            }
+            return false;
+        } else if (dir.equals("SE")) {
+            for (int i = curr - 7; !(i == moveTo); i = i-7) {
+                if (!(cb.getBoard().get(i).getPiece() == null)) {
+                    return true;
+                }
+            }
+            return false;
+        } else if (dir.equals("NW")) {
+            for (int i = curr + 7; !(i == moveTo); i = i+7) {
+                if (!(cb.getBoard().get(i).getPiece() == null)) {
+                    return true;
+                }
+            }
+            return false;
+
+        } else if (dir.equals("SW")) {
+            for (int i = curr - 9; !(i == moveTo); i = i-9) {
+                if (!(cb.getBoard().get(i).getPiece() == null)) {
+                    return true;
+                }
+            }
+            return false;
+
+        } else {
+            System.out.print("invalid position");//throw exception
+            return true;
+        }
+    }
+
+    String directionHelper(int curr, int moveTo) {
         String dir = "";
         for (int n = -7; n < 8; n++) {
             if (moveTo == curr + n*8 + n) {
@@ -75,7 +115,7 @@ public class Bishop extends Piece {
                     dir = "NONE";
                     break;
                 } else {
-                    dir = "SE";
+                    dir = "SW";
                     break;
                 }
             } else if(moveTo == curr + n*8 - n) {
@@ -86,48 +126,15 @@ public class Bishop extends Piece {
                     dir = "NONE";
                     break;
                 } else {
-                    dir = "SW";
+                    dir = "SE";
                     break;
                 }
+            } else if(moveTo == curr + n*8 - n) {
+
+            } else {
+
             }
         }
-        System.out.print(dir);
-//since curr is numberposition(which is one larger than the coordinate, subtracting 1
-        if (dir.equals("NE")) {
-            for (int i = curr; i < moveTo; i = i+9) {
-                if (!(cb.getBoard().get(i-1).getPiece() == null)) {
-                    return true;
-                }
-            }
-            return false;
-        } else if (dir.equals("SE")) {
-            for (int i = curr; i < moveTo; i = i-7) {
-                if (!(cb.getBoard().get(i-1).getPiece() == null)) {
-                    return true;
-                }
-            }
-            return false;
-        } else if (dir.equals("NW")) {
-            for (int i = curr; i < moveTo; i = i+7) {
-                if (!(cb.getBoard().get(i-1).getPiece() == null)) {
-                    return true;
-                }
-            }
-            return false;
-
-        } else if (dir.equals("SW")) {
-            for (int i = curr; i < moveTo; i = i-9) {
-                if (!(cb.getBoard().get(i-1).getPiece() == null)) {
-                    return true;
-                }
-            }
-            return false;
-
-        } else {
-            System.out.print("invalid position");//throw exception
-            return true;
-
-
-        }
+        return dir;
     }
 }

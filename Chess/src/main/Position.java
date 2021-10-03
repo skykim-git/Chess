@@ -53,15 +53,16 @@ public class Position {
 
         int num;
         int alphabetInt;
+        int forCorNp = this.numberPosition + 1;
 
         // quotient represents the row(number) in a coordinate
         // remainder represents the col(alphabet) in a coordinate
-        if (this.numberPosition % 8 == 0) {// where problem occured with 64-@ascii code
-            num = this.numberPosition / 8;
+        if (forCorNp % 8 == 0) {// where problem occured with 64-@ascii code
+            num = forCorNp / 8;
             alphabetInt = 8;// 64 + 8 = ascii for h
         } else {
-            num = this.numberPosition / 8 + 1;
-            alphabetInt = this.numberPosition % 8;
+            num = forCorNp / 8 + 1;
+            alphabetInt = forCorNp % 8;
         }
 
         String alphabetString = NumToAlpha(alphabetInt);

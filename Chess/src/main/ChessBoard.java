@@ -11,7 +11,7 @@ public class ChessBoard {
     // EFFECTS : constructs a main.ChessBoard with 64 positions.
     public ChessBoard() {
         for (int i = 0; i < 64; i = i + 1) {
-            this.board.add(new Position(i+1));// 1-64
+            this.board.add(new Position(i));// 1-64
         }
     }
 

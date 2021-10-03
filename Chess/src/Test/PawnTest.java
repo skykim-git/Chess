@@ -46,7 +46,8 @@ public class PawnTest {
         // check if the pawn was moved (position has piece)
         assertEquals("WP",bd.get(16).getPiece().getName());
         // check if the pawn was moved (piece has position)
-        assertEquals(17,bd.get(16).getPiece().getPosition().getNumberPosition());
+        assertEquals(16,bd.get(16).getPiece().getPosition().getNumberPosition());
+
     }
 
     @Test
@@ -59,7 +60,7 @@ public class PawnTest {
         // check if the pawn was moved (position has piece)
         assertEquals("WP",bd.get(16).getPiece().getName());
         // check if the pawn was moved (piece has position)
-        assertEquals(17,bd.get(16).getPiece().getPosition().getNumberPosition());
+        assertEquals(16,bd.get(16).getPiece().getPosition().getNumberPosition());
 
         // move the pawn from 16 to 24(index)
         bd.get(16).getPiece().move(bd.get(24), cb);
@@ -69,7 +70,7 @@ public class PawnTest {
         // check if the pawn was moved (position has piece)
         assertEquals("WP",bd.get(24).getPiece().getName());
         // check if the pawn was moved (piece has position)
-        assertEquals(25,bd.get(24).getPiece().getPosition().getNumberPosition());
+        assertEquals(24,bd.get(24).getPiece().getPosition().getNumberPosition());
     }
 
     @Test
@@ -109,7 +110,7 @@ public class PawnTest {
         // check if the pawn was moved (position has piece)
         assertEquals("BP",bd.get(40).getPiece().getName());
         // check if the pawn was moved (piece has position)
-        assertEquals(41,bd.get(40).getPiece().getPosition().getNumberPosition());
+        assertEquals(40,bd.get(40).getPiece().getPosition().getNumberPosition());
     }
 
     @Test
@@ -124,7 +125,7 @@ public class PawnTest {
         // check if the pawn was moved (position has piece)
         assertEquals("BP",bd.get(32).getPiece().getName());
         // check if the pawn was moved (piece has position)
-        assertEquals(33,bd.get(32).getPiece().getPosition().getNumberPosition());
+        assertEquals(32,bd.get(32).getPiece().getPosition().getNumberPosition());
 
     }
 
@@ -141,7 +142,7 @@ public class PawnTest {
         // check if the pawn was moved (position has piece)
         assertEquals("BP",bd.get(40).getPiece().getName());
         // check if the pawn was moved (piece has position)
-        assertEquals(41,bd.get(40).getPiece().getPosition().getNumberPosition());
+        assertEquals(40,bd.get(40).getPiece().getPosition().getNumberPosition());
     }
 
     @Test
@@ -157,6 +158,6 @@ public class PawnTest {
         // check if the pawn was moved (position has piece)
         assertEquals("BP",bd.get(42).getPiece().getName());
         // check if the pawn was moved (piece has position)
-        assertEquals(43,bd.get(42).getPiece().getPosition().getNumberPosition());
+        assertEquals(42,bd.get(42).getPiece().getPosition().getNumberPosition());
     }
 }
