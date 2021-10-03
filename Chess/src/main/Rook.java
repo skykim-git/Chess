@@ -58,13 +58,13 @@ public class Rook extends Piece{
             }
         }
 
-        for (int i = 0; i< currentNumberPos%8 ; i++) {
+        for (int i = 0; i <= currentNumberPos%8 ; i++) {
             if (moveToNumberPos == currentNumberPos - i) {
                 return true;
             }
         }
 
-        for (int i = 0; i< (8- (currentNumberPos%8 + 1)); i++) {
+        for (int i = 0; i <= (8- (currentNumberPos%8 + 1)); i++) {
             if (moveToNumberPos == currentNumberPos + i) {
                 return true;
             }
@@ -93,7 +93,7 @@ public class Rook extends Piece{
             }
             return false;
         } else if (dir.equals("W")) {
-            for (int i = curr -1; !(i == moveTo); i = i--) {
+            for (int i = curr -1; !(i == moveTo); i--) {
                 if (!(cb.getBoard().get(i).getPiece() == null)) {
                     return true;
                 }
@@ -101,7 +101,7 @@ public class Rook extends Piece{
             return false;
 
         } else if (dir.equals("E")) {
-            for (int i = curr +1; !(i == moveTo); i = i++) {
+            for (int i = curr +1; !(i == moveTo); i++) {
                 if (!(cb.getBoard().get(i).getPiece() == null)) {
                     return true;
                 }
@@ -129,13 +129,13 @@ public class Rook extends Piece{
             }
         }
 
-        for (int i = 0; i< curr%8 ; i++) {
+        for (int i = 0; i<= curr%8 ; i++) { // greater or equal to bc, should get to the final of curr%8
             if (moveTo == curr - i) {
                 dir = "W";
             }
         }
 
-        for (int i = 0; i< (8- (curr%8 + 1)); i++) {
+        for (int i = 0; i<= (8- (curr%8 + 1)); i++) {
             if (moveTo == curr + i) {
                 dir = "E";
             }
