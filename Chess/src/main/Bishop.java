@@ -20,14 +20,19 @@ public class Bishop extends Piece {
             System.out.print("out of bound");// possible throw exception
         } if (isInRange(moveToNumberPos,currentNumberPos)) {
             if (isWhite(this)) {//white
+                if (isNoBlocking(currentNumberPos,moveToNumberPos,cb)) {
                 if (pos.getPiece() == null) {// if front empty // helper??? //simpiify using pos.get...
                     currentPos.removePiece();// should remove from current position
                     pos.setPiece(this); // can be defined as a helper
+
                 } else if (!isWhite(pos.getPiece())) {
                     currentPos.removePiece();// should remove from current position
                     pos.setPiece(this); // can be defined as a helper
                 } else {
                     //teamkillexception
+                }
+                } else {
+
                 }
             } else {//black
                 if (pos.getPiece() == null) {// if front empty // helper??? //simpiify using pos.get...
@@ -59,5 +64,65 @@ public class Bishop extends Piece {
         }
         return false;
 
+    }
+
+    boolean isNoBlocking(int curr, int moveTo, ChessBoard cb) {
+        String dir = "";
+        for (int n = -7; n < 8; n++) {
+            if (moveTo == n*8 + n) {
+                if (n > 0) {
+                    dir = "NE";
+
+                } else if (n == 0) {
+                    dir = "NONE";
+                } else {
+                    dir = "SE";
+                }
+            } else if(moveTo == n*8 - n) {
+                if (n > 0) {
+                    dir = "NW";
+                } else if (n==0) {
+                    dir = "NONE";
+                } else {
+                    dir = "SW";
+                }
+            }
+        }
+        System.out.print(dir);
+
+        if (dir.equals("NE")) {
+            for (int i = curr; i < moveTo; i = i+9) {
+                if (!(cb.getBoard().get(curr).getPiece() == null)) {
+                    return false;
+                }
+            }
+            return true;
+        } else if (dir.equals("SE")) {
+            for (int i = curr; i < moveTo; i = i-7) {
+                if (!(cb.getBoard().get(curr).getPiece() == null)) {
+                    return false;
+                }
+            }
+            return true;
+        } else if (dir.equals("NW")) {
+            for (int i = curr; i < moveTo; i = i+7) {
+                if (!(cb.getBoard().get(curr).getPiece() == null)) {
+                    return false;
+                }
+            }
+            return true;
+
+        } else if (dir.equals("SW")) {
+            for (int i = curr; i < moveTo; i = i-9) {
+                if (!(cb.getBoard().get(curr).getPiece() == null)) {
+                    return false;
+                }
+            }
+            return true;
+
+        } else {
+
+        }
+        for (int n)
     }
 }
