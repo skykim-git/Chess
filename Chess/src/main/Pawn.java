@@ -63,17 +63,56 @@ public class Pawn extends Piece{
                         pos.setPiece(this);
                     } else {
                         // throw no possible place exception
-
                     }
-
-
-
                 }
 
             }
         }
 
 
+    }
+
+    @Override
+    public boolean canKillKing(Position pos, ChessBoard cb) {
+        int moveToNumberPos = pos.getNumberPosition();// numberPosition that we are moving to
+        Position currentPos = this.position;//position current
+        int currentNumberPos = this.position.getNumberPosition();// numberPosition current
+
+
+        if (moveToNumberPos >= 64 || moveToNumberPos <= -1) { // out of range case // can be defined as a helper
+            return false;
+        } else {
+            if (isWhite(this)) {// white
+                if (moveToNumberPos == currentNumberPos + 8) {// compared to current position, front
+                    return false;
+                } else if (moveToNumberPos == currentNumberPos + 8 + 1 // case where going(killing pieces on the diagonal
+                        ||moveToNumberPos == currentNumberPos + 8 -1) { // kill black // get isWhite out(need no possible places exception)
+                    // later case king kill
+                    if (!isWhite(pos.getPiece())) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+
+                } else {
+                    return false;
+                }
+
+            } else { // black
+                if (moveToNumberPos == currentNumberPos - 8) {// front compared to the current position
+                    return false;
+                } else if (moveToNumberPos == currentNumberPos - 8 + 1
+                        ||moveToNumberPos == currentNumberPos - 8 -1) {
+                    if (isWhite(pos.getPiece())) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+
+            }
+        }
+        return false;
     }
 
     // promotion feature add later
