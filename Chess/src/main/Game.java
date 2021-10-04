@@ -11,33 +11,34 @@ public class Game {
 
     public Game() {
         this.cb = new ChessBoard();
-        List<Position> board = cb.getBoard();
+        bd = cb.getBoard();
+
 
         // positions 0~63 index should be..., values are from 1 to 64
-        board.get(0).setPiece(new Rook("WR"));
-        board.get(1).setPiece(new Knight("WN"));
-        board.get(2).setPiece(new Bishop("WB"));
-        board.get(3).setPiece(new Queen("WQ"));
-        board.get(4).setPiece(new King("WK"));
-        board.get(5).setPiece(new Bishop("WB"));
-        board.get(6).setPiece(new Knight("WN"));
-        board.get(7).setPiece(new Rook("WR"));
+        bd.get(0).setPiece(new Rook("WR"));
+        bd.get(1).setPiece(new Knight("WN"));
+        bd.get(2).setPiece(new Bishop("WB"));
+        bd.get(3).setPiece(new Queen("WQ"));
+        bd.get(4).setPiece(new King("WK"));
+        bd.get(5).setPiece(new Bishop("WB"));
+        bd.get(6).setPiece(new Knight("WN"));
+        bd.get(7).setPiece(new Rook("WR"));
         for (int  i = 8; i < 16; i = i +1 ) {
-            board.get(i).setPiece(new Pawn("WP"));
+            bd.get(i).setPiece(new Pawn("WP"));
         }
 
         for (int  j = 48; j < 56; j = j +1 ) {
-            board.get(j).setPiece(new Pawn("BP"));
+            bd.get(j).setPiece(new Pawn("BP"));
         }
 
-        board.get(56).setPiece(new Rook("BR"));
-        board.get(57).setPiece(new Knight("BN"));
-        board.get(58).setPiece(new Bishop("BB"));
-        board.get(59).setPiece(new King("BQ"));
-        board.get(60).setPiece(new Queen("BK"));
-        board.get(61).setPiece(new Bishop("BB"));
-        board.get(62).setPiece(new Knight("BN"));
-        board.get(63).setPiece(new Rook("BR"));
+        bd.get(56).setPiece(new Rook("BR"));
+        bd.get(57).setPiece(new Knight("BN"));
+        bd.get(58).setPiece(new Bishop("BB"));
+        bd.get(59).setPiece(new King("BQ"));
+        bd.get(60).setPiece(new Queen("BK"));
+        bd.get(61).setPiece(new Bishop("BB"));
+        bd.get(62).setPiece(new Knight("BN"));
+        bd.get(63).setPiece(new Rook("BR"));
 
     }
 
@@ -79,7 +80,7 @@ public class Game {
         }else if (givenAlpha.equals("h")) {
             alphaNum = 7;
         }
-            int givenNumber = Integer.parseInt(coor.substring(1,1));
+            int givenNumber = Integer.parseInt(coor.substring(1,2));
         int np = (givenNumber-1)*8 + alphaNum;
         return np;
     }
