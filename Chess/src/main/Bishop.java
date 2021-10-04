@@ -103,7 +103,6 @@ public class Bishop extends Piece {
 
     boolean isBlocking(int curr, int moveTo, ChessBoard cb) {
         String dir = directionHelper(curr,moveTo);
-        System.out.print(dir);
 //since curr is numberposition(which is one larger than the coordinate, subtracting 1
         if (dir.equals("NE")) { // i should be curr + 9, because given piece is
             for (int i = curr + 9; !(i == moveTo); i = i+9) {
