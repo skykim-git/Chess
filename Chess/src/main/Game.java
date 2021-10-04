@@ -5,6 +5,7 @@ import java.util.List;
 public class Game {
     //initialize game
     ChessBoard cb;
+    private List<Position> bd;
     int turn;
 
 
@@ -44,10 +45,48 @@ public class Game {
         return cb;
     }
 
-    public void movePiece(Position p) {
-        int numPos = p.getNumberPosition();
-        this.cb.getBoard().get(numPos).getPiece().move(p,this.cb);// will move. think more about the mechnism of  moving. I thinks
-        // choosing a position(by user click input is reasonable)
+    void progressTurn() {
+        turn++;
+    }
+
+    public void movePiece(String startCoor, String endCoor) {
+        int startNp = coorToNp(startCoor);
+        int endNp   = coorToNp(endCoor);
+        Position endPosition = bd.get(endNp);
+
+        bd.get(startNp).getPiece().move(endPosition, cb);
+
+    }
+
+    public int coorToNp(String coor) {
+
+        String givenAlpha = coor.substring(0,1);
+        int alphaNum = -100;
+        if (givenAlpha.equals("a")) {
+            alphaNum = 0;
+        } else if (givenAlpha.equals("b")) {
+            alphaNum = 1;
+        } else if (givenAlpha.equals("c")) {
+            alphaNum = 2;
+        } else if (givenAlpha.equals("d")) {
+            alphaNum = 3;
+        } else if (givenAlpha.equals("e")) {
+            alphaNum = 4;
+        }else if (givenAlpha.equals("f")) {
+            alphaNum = 5;
+        }else if (givenAlpha.equals("g")) {
+            alphaNum = 6;
+        }else if (givenAlpha.equals("h")) {
+            alphaNum = 7;
+        }
+            int givenNumber = Integer.parseInt(coor.substring(1,1));
+        int np = (givenNumber-1)*8 + alphaNum;
+        return np;
+    }
+
+    public boolean isEnd() {
+        // tells if the game is end(checkmate or stalemate) for now just always runs
+        return true;
     }
 
     public static void main(String arg[]) {
