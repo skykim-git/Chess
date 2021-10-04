@@ -109,16 +109,10 @@ public class King extends Piece{
         List<Integer> loOpponentPieces = OpponentGetter(isWhite, cb);
         List<Integer> loCanKillKingPieces = new ArrayList<Integer>();
         for (int i: loOpponentPieces) {
-            System.out.print(cb.getBoard().get(i).getPiece().getName());
-            System.out.print(cb.getBoard().get(i).getPiece().canKillKing(cb.getBoard().get(kingMoveTo),cb, isWhite(this)));
             if (cb.getBoard().get(i).getPiece().canKillKing(cb.getBoard().get(kingMoveTo), cb, isWhite(this))) {
                 loCanKillKingPieces.add(i);
             }
         }
-        for (int i: loCanKillKingPieces) {
-            System.out.print(i);
-        }
-        System.out.print(loCanKillKingPieces);
 
         return loCanKillKingPieces;
     }
