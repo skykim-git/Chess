@@ -19,13 +19,17 @@ public class Chess {
         System.out.print("Welcome");
         System.out.print("\n");
         displayBoard();
-        while (g.isEnd()) {
+        System.out.print(g.isEnd());
+        while (!(g.isEnd())) {
             System.out.print("First input start coordinate and the end coordinate of piece ");
             System.out.print("\n");
             String startCoor = getUserInputString();
             String endCoor = getUserInputString();
             g.movePiece(startCoor, endCoor);
             displayBoard();
+            if (g.isEnd()) {
+                System.out.print("Checkmate!");
+            }
         }
 
 

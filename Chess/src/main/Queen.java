@@ -89,7 +89,6 @@ public class Queen extends Piece{
 
     boolean isBlocking(int curr, int moveTo, ChessBoard cb) {
         String dir = directionHelper(curr,moveTo);
-        System.out.print(dir);
 //since curr is numberposition(which is one larger than the coordinate, subtracting 1
         if (dir.equals("N")) { // i should be curr + 9, because given piece is
             for (int i = curr + 8; !(i == moveTo); i = i+8) {

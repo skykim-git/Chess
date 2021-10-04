@@ -105,7 +105,7 @@ public class King extends Piece{
         return false;
     }
 
-    List<Integer> possiblePositionChecker(boolean isWhite, ChessBoard cb, int curr, int kingMoveTo) {
+    public List<Integer> possiblePositionChecker(boolean isWhite, ChessBoard cb, int curr, int kingMoveTo) {
         List<Integer> loOpponentPieces = OpponentGetter(isWhite, cb);
         List<Integer> loCanKillKingPieces = new ArrayList<Integer>();
         for (int i: loOpponentPieces) {

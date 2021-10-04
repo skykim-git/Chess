@@ -1,5 +1,6 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -86,12 +87,126 @@ public class Game {
     }
 
     public boolean isEnd() {
-        // tells if the game is end(checkmate or stalemate) for now just always runs
-        return true;
+        // tells if the game is end(checkmate) for now just always runs
+        //checkmate
+        int countTrue = 0;
+        List<Integer> kings = findKings();
+        if (bd.get(kings.get(0)).getPiece().getName().equals("WK")) { //0 W, 1 B
+            if (bd.get(kings.get(0)).getPiece().possiblePositionChecker(true,cb,kings.get(0),kings.get(0)).size() == 0) {
+                //return false;
+            } else {
+                if (0 <= kings.get(0) + 1 && kings.get(0) + 1 <= 63) {
+                    if (bd.get(kings.get(0)+1).getPiece().possiblePositionChecker(true,cb,kings.get(0)+1,kings.get(0)+1).size() == 0) {
+                        //return false;
+                    }
+                } else if (0 <= kings.get(0) - 1 && kings.get(0) - 1 <= 63) {
+                    if (bd.get(kings.get(0)-1).getPiece().possiblePositionChecker(true,cb,kings.get(0)-1,kings.get(0)-1).size() == 0) {
+                        //return false;
+                    }
+                } else if (0 <= kings.get(0) + 7 && kings.get(0) + 7 <= 63) {
+                    if (bd.get(kings.get(0)-1).getPiece().possiblePositionChecker(true,cb,kings.get(0)+7,kings.get(0)+7).size() == 0) {
+                        //return false;
+                    }
+
+                } else if (0 <= kings.get(0) + 8 && kings.get(0) + 8 <= 63) {
+                    if (bd.get(kings.get(0)-1).getPiece().possiblePositionChecker(true,cb,kings.get(0)+8,kings.get(0)+8).size() == 0) {
+                        //return false;
+                    }
+
+                } else if (0 <= kings.get(0) + 9 && kings.get(0) + 9 <= 63) {
+                    if (bd.get(kings.get(0)-1).getPiece().possiblePositionChecker(true,cb,kings.get(0)+9,kings.get(0)+9).size() == 0) {
+                        //return false;
+                    }
+
+                } else if (0 <= kings.get(0) - 7 && kings.get(0) - 7 <= 63) {
+                    if (bd.get(kings.get(0)-1).getPiece().possiblePositionChecker(true,cb,kings.get(0)-7,kings.get(0)-7).size() == 0) {
+                        //return false;
+                    }
+
+                } else if (0 <= kings.get(0) - 8 && kings.get(0) - 8 <= 63) {
+                    if (bd.get(kings.get(0)-1).getPiece().possiblePositionChecker(true,cb,kings.get(0)-8,kings.get(0)-8).size() == 0) {
+                        //return false;
+                    }
+
+                } else if (0 <= kings.get(0) - 9 && kings.get(0) - 9 <= 63) {
+                    if (bd.get(kings.get(0)-1).getPiece().possiblePositionChecker(true,cb,kings.get(0)-9,kings.get(0)-9).size() == 0) {
+                        //return false;
+                    }
+
+                } else {
+                    countTrue++;
+                }
+            }
+
+        } else {// 0 B, 1 W
+            if (bd.get(kings.get(1)).getPiece().possiblePositionChecker(true,cb,kings.get(1),kings.get(1)).size() == 0) {
+                //return false;
+            } else {
+                if (0 <= kings.get(1) + 1 && kings.get(1) + 1 <= 63) {
+                    if (bd.get(kings.get(1)+1).getPiece().possiblePositionChecker(true,cb,kings.get(1)+1,kings.get(1)+1).size() == 0) {
+                        //return false;
+                    }
+                } else if (0 <= kings.get(1) - 1 && kings.get(1) - 1 <= 63) {
+                    if (bd.get(kings.get(1)-1).getPiece().possiblePositionChecker(true,cb,kings.get(1)-1,kings.get(1)-1).size() == 0) {
+                        //return false;
+                    }
+                } else if (0 <= kings.get(1) + 7 && kings.get(1) + 7 <= 63) {
+                    if (bd.get(kings.get(1)-1).getPiece().possiblePositionChecker(true,cb,kings.get(1)+7,kings.get(1)+7).size() == 0) {
+                        //return false;
+                    }
+
+                } else if (0 <= kings.get(1) + 8 && kings.get(1) + 8 <= 63) {
+                    if (bd.get(kings.get(1)-1).getPiece().possiblePositionChecker(true,cb,kings.get(1)+8,kings.get(1)+8).size() == 0) {
+                        //return false;
+                    }
+
+                } else if (0 <= kings.get(1) + 9 && kings.get(1) + 9 <= 63) {
+                    if (bd.get(kings.get(1)-1).getPiece().possiblePositionChecker(true,cb,kings.get(1)+9,kings.get(1)+9).size() == 0) {
+                        //return false;
+                    }
+
+                } else if (0 <= kings.get(1) - 7 && kings.get(1) - 7 <= 63) {
+                    if (bd.get(kings.get(1)-1).getPiece().possiblePositionChecker(true,cb,kings.get(1)-7,kings.get(1)-7).size() == 0) {
+                        //return false;
+                    }
+
+                } else if (0 <= kings.get(1) - 8 && kings.get(1) - 8 <= 63) {
+                    if (bd.get(kings.get(1)-1).getPiece().possiblePositionChecker(true,cb,kings.get(1)-8,kings.get(1)-8).size() == 0) {
+                        //return false;
+                    }
+
+                } else if (0 <= kings.get(1) - 9 && kings.get(1) - 9 <= 63) {
+                    if (bd.get(kings.get(1) - 1).getPiece().possiblePositionChecker(true, cb, kings.get(1) - 9, kings.get(1) - 9).size() == 0) {
+                        //return false;
+                    }
+                } else {
+                    countTrue++;
+                }
+            }
+
+        }
+
+        if (countTrue > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public List<Integer> findKings() {
+        List<Integer> kings = new ArrayList<Integer>();
+        for (int i = 0; i < 64; i++) {
+             if (!(bd.get(i).getPiece() == null)) {
+                 if (bd.get(i).getPiece().getName().equals("WK")
+                     || bd.get(i).getPiece().getName().equals("BK")) {
+                     kings.add(i);
+                 }
+             }
+        }
+        return kings;
     }
 
     public static void main(String arg[]) {
-
     }
 
 }
