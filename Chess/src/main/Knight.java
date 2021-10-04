@@ -68,4 +68,62 @@ public class Knight extends Piece {
         }
 
     }
+
+    @Override
+    public boolean canKillKing(Position pos, ChessBoard cb, boolean isWhite) {
+
+        int moveToNumberPos = pos.getNumberPosition();// numberPosition that we are moving to
+        Position currentPos = this.position;//position current
+        int currentNumberPos = this.position.getNumberPosition();// numberPosition current
+
+        if (moveToNumberPos >= 64 || moveToNumberPos <= -1) { // out of range case
+            System.out.print("out of bound");// possible throw exception
+        } else {
+            if (isWhite(this)) {
+                if (moveToNumberPos == currentNumberPos + 2*8 + 1
+                        ||moveToNumberPos == currentNumberPos + 2*8 - 1
+                        ||moveToNumberPos == currentNumberPos + 1*8 + 2
+                        ||moveToNumberPos == currentNumberPos + 1*8 - 2
+                        ||moveToNumberPos == currentNumberPos - 1*8 + 2
+                        ||moveToNumberPos == currentNumberPos - 1*8 - 2
+                        ||moveToNumberPos == currentNumberPos - 2*8 + 1
+                        ||moveToNumberPos == currentNumberPos - 2*8 - 1) {
+
+//                    these two are diff, guess something to do with pass by reference... above works below does not catch
+                    // changes already made
+//                    System.out.print(pos.getPiece());
+//                    System.out.print(cb.getBoard().get(moveToNumberPos).getPiece().getName());
+
+                    if (pos.getPiece() == null) {// if front empty // helper??? //simpiify using pos.get...
+                        return true;
+                    } else if (!isWhite) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            } else { // black
+                if (moveToNumberPos == currentNumberPos + 2*8 + 1
+                        ||moveToNumberPos == currentNumberPos + 2*8 - 1
+                        ||moveToNumberPos == currentNumberPos + 1*8 + 2
+                        ||moveToNumberPos == currentNumberPos + 1*8 - 2
+                        ||moveToNumberPos == currentNumberPos - 1*8 + 2
+                        ||moveToNumberPos == currentNumberPos - 1*8 - 2
+                        ||moveToNumberPos == currentNumberPos - 2*8 + 1
+                        ||moveToNumberPos == currentNumberPos - 2*8 - 1) {
+                    if (pos.getPiece() == null) {// if front empty // helper??? //simpiify using pos.get...
+                        return true;
+                    } else if (isWhite) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+
+                }
+
+            }
+
+        }
+        return false;
+    }
 }

@@ -50,6 +50,44 @@ public class Bishop extends Piece {
         }
     }
 
+    @Override
+    public boolean canKillKing(Position pos, ChessBoard cb, boolean isWhite) {
+        int moveToNumberPos = pos.getNumberPosition();// numberPosition that we are moving to
+        Position currentPos = this.position;//position current
+        int currentNumberPos = this.position.getNumberPosition();// numberPosition current
+
+
+        if (moveToNumberPos >= 64 || moveToNumberPos <= -1) { // out of range case // can be defined as a helper
+            return false;
+        } else {
+            if (isInRange(moveToNumberPos,currentNumberPos)) {
+                if (!isBlocking(currentNumberPos,moveToNumberPos,cb)) {
+                    if (isWhite(this)) {//white
+                        if (pos.getPiece() == null) {// if front empty // helper??? //simpiify using pos.get...
+                            return true;
+
+                        } else if (!isWhite) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    } else {//black
+                        if (pos.getPiece() == null) {// if front empty // helper??? //simpiify using pos.get...
+                            return true;
+                        } else if (isWhite) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                }
+            } else {
+                return false;
+            }
+        }
+        return false;
+    }
+
 
     boolean isInRange(int moveToNumberPos, int currentNumberPos) {
 

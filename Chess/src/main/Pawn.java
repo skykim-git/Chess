@@ -73,7 +73,7 @@ public class Pawn extends Piece{
     }
 
     @Override
-    public boolean canKillKing(Position pos, ChessBoard cb) {
+    public boolean canKillKing(Position pos, ChessBoard cb, boolean isWhite) {
         int moveToNumberPos = pos.getNumberPosition();// numberPosition that we are moving to
         Position currentPos = this.position;//position current
         int currentNumberPos = this.position.getNumberPosition();// numberPosition current
@@ -88,7 +88,7 @@ public class Pawn extends Piece{
                 } else if (moveToNumberPos == currentNumberPos + 8 + 1 // case where going(killing pieces on the diagonal
                         ||moveToNumberPos == currentNumberPos + 8 -1) { // kill black // get isWhite out(need no possible places exception)
                     // later case king kill
-                    if (!isWhite(pos.getPiece())) {
+                    if (!isWhite) {
                         return true;
                     } else {
                         return false;
@@ -103,7 +103,7 @@ public class Pawn extends Piece{
                     return false;
                 } else if (moveToNumberPos == currentNumberPos - 8 + 1
                         ||moveToNumberPos == currentNumberPos - 8 -1) {
-                    if (isWhite(pos.getPiece())) {
+                    if (isWhite) {
                         return true;
                     } else {
                         return false;
